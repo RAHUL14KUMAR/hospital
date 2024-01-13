@@ -121,7 +121,7 @@ function DoctorCarousel() {
                 ))}
                 </ul>
             </div>
-            <div>
+            <div className='shadow-2xl'>
                 <div className="flex-col h-40 w-40 items-center justify-center bg-blue-200 rounded-lg shadow-2xl hidden md:block lg:block box">
                 <FaCity className="text-5xl text-blue-950 mx-auto text-center my-5" />
                     <div className="text-center font-baloo-bhai overflow-hidden text-blue-950">
