@@ -105,6 +105,9 @@
     padding: 50px;
     margin-top: -5em;
 }
+.swiper-button-prev,.swiper-button-next{
+    visibility: hidden;  
+}
 
 
   @media only screen and (min-width:200px) and (max-width:750px){
@@ -115,5 +118,21 @@
     }
     .swipe h1{
         text-align: center;
+        margin-right: 1em;
+    }
+    .swipe p{
+        text-align: center;
+        margin-right: 1em;
+    }
+    .swiper-wrapper{
+        margin-top: 2em;
+        position:relative;
+        right:2em
+    }
+    .swiper-button-prev,.swiper-button-next{
+        visibility: hidden;  
+    }
+    .swiper-pagination{
+        padding-right: 3em;
     }
   }

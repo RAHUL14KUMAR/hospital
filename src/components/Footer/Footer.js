@@ -6,7 +6,7 @@ import { BsDiscord, BsGithub, BsLinkedin } from "react-icons/bs";
 
 function Footer() {
   return (
-    <div className=" max-w-screen flex flex-col bg-emerald-100">
+    <div className=" max-w-screen flex flex-col bg-emerald-100 m-5">
     <div className="flex md:justify-center md:items-center w-screen p-2">
         <div className=" md:w-1/2 w-screen m-5">
             <h1 className="text-xl font-bold  md:text-2xl text-emerald-900 underline md:text-center font-baloo-bhai tracking-widest overflow-hidden">HEALTH POINT</h1>
@@ -68,7 +68,7 @@ function Footer() {
                     </motion.div>
                 </div>
             
-                <p className="font-semibold mt-5 text-black-700 text-center font-baloo-bhai overflow-hidden">© 2023 Health point + Inc. All Rights Reserved.</p>
+                <p className="font-semibold mt-5 text-black-700 text-center font-baloo-bhai overflow-hidden mr-5">© 2023 Health point + Rights Reserved.</p>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@ function Swipers() {
         }}
         navigation={true}
         modules={[Autoplay, EffectFlip, Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper swap"
       >
         <SwiperSlide>
         <div className='w-fit bg-white h-fit flex p-5 my-20'>

@@ -6,7 +6,7 @@ import Swiper from './swipers';
 
 function Testinomials() {
   return (
-    <>
+    <div className='p-2 h-fit m-5'>
         <div className="flex md:flex-row lg:flex-row bg-emerald-50 w-screen justify-evenly p-10 swipe">
             <div className="font-baloo-bhai font- bold text-2xl overflow-y-hidden">
                 <h1 className='overflow-hidden'>We belive in to make<br/>
@@ -21,7 +21,7 @@ function Testinomials() {
                 <Swiper/>
             </div>
         </div>
-    </>
+    </div>
   )
 }
 
