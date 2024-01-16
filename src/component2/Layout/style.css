@@ -1,0 +1,24 @@
+.arrow-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  button:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+
+  .modal{
+    position :absolute;
+    top:0;
+    right:0;
+    overflow: hidden;
+    cursor:pointer;
+    width:18em;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .icon{
+    position:absolute;
+    right:45px;
+    top:25px;
+  }

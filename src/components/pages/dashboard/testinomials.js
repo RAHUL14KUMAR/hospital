@@ -15,7 +15,7 @@ function Testinomials() {
 
                 <p className='overflow-hidden'> Are you?</p>
                 <br/>
-                <p className='overflow-hidden'> let join hands and fight for<p className='text-4xl text-emerald-800 overflow-hidden'>Healthy life !!!</p></p>
+                <p className='overflow-hidden'> let join hands and fight for <br/><span className='text-4xl text-emerald-800 overflow-hidden'>Healthy life !!!</span></p>
             </div>
             <div>
                 <Swiper/>
