@@ -23,7 +23,7 @@ function Navbar() {
             </div>
 
             <div className="p-0.1 hidden lg:inline-block">
-                <button className="m-2 rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 hover:text-emerald-950 m-1">About
+                <button className="m-2 rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 hover:text-emerald-950 m-1" onClick={()=>navigate('/play')}>About
                 </button>
                 <button className="m-2 rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 hover:text-emerald-950">Careers</button>
                 <button className="m-2 rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 hover:text-emerald-950">Contact</button>
@@ -45,14 +45,9 @@ function Navbar() {
                                 </button>
                             </div>
                             <div>
-                            <button className="rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 text-emerald-950 m-4">About</button>
+                            <button className="rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 text-emerald-950 m-4" onClick={()=>navigate('/play')}>About</button>
                             </div>
-                            <div>
-                            <button className="rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 text-emerald-950 m-4">Careers</button>
-                            </div>
-                            <div>
-                            <button className="rounded-lg p-2 text-lg font-medium hover:bg-emerald-100 text-emerald-950 m-4">Contact</button>
-                            </div>
+
                             </motion.div>
                         </div>
                     }

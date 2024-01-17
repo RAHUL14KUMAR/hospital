@@ -1,9 +1,46 @@
 import React from 'react'
+import { BsLinkedin, BsMailbox2, BsPhoneFill } from 'react-icons/bs'
+import {motion} from 'framer-motion'
+import { TbBrandGoogleMaps } from 'react-icons/tb'
 
 function Contact() {
   return (
-    <div>
-      <h1>contact</h1>
+    <div class="my-auto bg-emerald-100 p-5 overflow-hidden">
+        <div class="my-12 flex flex-col p-5 md:flex-row justify-evenly">
+            <motion.a href="agrawal.r1412@gmail.com" target='_blank' whileHover={{scale:1.2}} class="cursor-pointer m-5 mx-auto flex-col items-center justify-center bg-white p-5 text-center shadow-2xl">
+                <div class="text-embg-emerald-900 mx-auto my-auto flex h-24 w-24 items-center justify-center bg-emerald-200 font-bold">
+                    <BsMailbox2 class="text-4xl font-bold text-emerald-900"/>
+                </div>
+
+                <div class="mx-auto my-auto mt-5 flex w-fit flex-col items-center justify-center font-bold tracking-widest text-emerald-900">EMAIL ME</div>
+            </motion.a>
+
+            <motion.div whileHover={{scale:1.2}} class="cursor-pointer m-5 mx-auto flex-col items-center justify-center bg-white p-5 text-center shadow-2xl">
+                <div class="text-embg-emerald-900 mx-auto my-auto flex h-24 w-24 items-center justify-center bg-emerald-200 font-bold">
+                    <BsPhoneFill class="text-4xl font-bold text-emerald-900"/>
+                </div>
+
+                <div class="mx-auto my-auto mt-5 flex w-fit flex-col items-center justify-center font-bold tracking-widest text-emerald-900">CALL ME</div>
+            </motion.div>
+        </div>
+
+        <div class="md:   my-12 flex flex-col p-5 md:flex-row">
+            <motion.div whileHover={{scale:1.2}} class="cursor-pointer m-5 mx-auto flex-col items-center justify-center bg-white p-5 text-center shadow-2xl">
+                <div class="text-embg-emerald-900 mx-auto my-auto flex h-24 w-24 items-center justify-center bg-emerald-200 font-bold">
+                    <BsLinkedin class="text-4xl font-bold text-emerald-900"/>
+                </div>
+
+                <div class="mx-auto my-auto mt-5 flex w-fit flex-col items-center justify-center font-bold tracking-widest text-emerald-900">LINKED IN</div>
+            </motion.div>
+
+            <motion.div whileHover={{scale:1.2}} class="cursor-pointer m-5 mx-auto flex-col items-center justify-center bg-white p-5 text-center shadow-2xl">
+                <div class="text-embg-emerald-900 mx-auto my-auto flex h-24 w-24 items-center justify-center bg-emerald-200 font-bold">
+                    <TbBrandGoogleMaps class="font-bold text-4xl text-emerald-900"/>
+                </div>
+
+                <div class="mx-auto my-auto mt-5 flex w-fit items-center justify-center font-bold tracking-widest text-emerald-900">GOOGLE MAP</div>
+            </motion.div>
+        </div>
     </div>
   )
 }
