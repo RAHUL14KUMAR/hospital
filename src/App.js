@@ -1,5 +1,5 @@
 import './App.css';
-import Contact from './component2/Contact/Contact';
+import CardDetails from './component2/Doctor/CardDetails';
 import Layout from './component2/Layout/Layout';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
@@ -14,6 +14,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/play' element={<Layout/>}/>
+        <Route path='/profile/:id' element={<CardDetails/>}/>
       </Routes>
     </BrowserRouter>
   
