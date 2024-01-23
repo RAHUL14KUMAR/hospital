@@ -7,6 +7,7 @@ import About from '../About/About';
 import Careers from '../Career/Careers';
 import Doctors from '../Doctor/Doctors';
 import {useNavigate} from "react-router-dom"
+import Profile from '../Profile/Profile';
 
 
 function Layout() {
@@ -36,6 +37,9 @@ function Layout() {
             case "Doctors":
                 return <Doctors/>
 
+            case "Profile":
+                return <Profile/>
+
             default:
                 return <About/>
                 
@@ -55,7 +59,9 @@ function Layout() {
                 </button>
 
                 <div className="overflow-hidden">
-                    <button className="bg-emerald-200 p-2 ml-5 rounded-lg text-purple-900 flex overflow-hidden p-1 text-emerald-900">Profile
+                    <button className="bg-emerald-200 p-2 ml-5 rounded-lg text-purple-900 flex overflow-hidden p-1 text-emerald-900" 
+                        onClick={()=>handleNavItem("Profile")}
+                    >Profile
                         <span className="text-2xl ml-3 text-emerald-900 arrow-icon">
                             <RiProfileLine/>
                         </span>
