@@ -12,6 +12,7 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 
 function Profile() {
     const [value, setValue] = React.useState();
+    const [comment,setCommment]=React.useState();
 
     const StyledRating = styled(Rating)(({ theme }) => ({
         '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
@@ -98,6 +99,19 @@ function Profile() {
         />
         {value==undefined?<p className='font-mono text-emerald-700 tracking-widest'> Rate US!!!</p> : 
         <p className='font-mono text-emerald-700 tracking-widest'> Thanks for the Rating!!!</p>}
+
+        <div className="my-4 mb-2">
+          <textarea
+            class="bg-emerald-300 text-emerald-900 font-mono placeholder-emerald-900"
+            placeholder="Enter your views"
+            name="comment"
+            values={comment}
+            onChange={(e)=>setCommment(e.target.value)}
+          ></textarea>
+        </div>
+        <div>
+          <button className='bg-emerald-300 text-emerald-900 hover:text-white font-mono p-3 rounded-sm'>Post Comment</button>
+        </div>
         </div>
     </div>
   )
