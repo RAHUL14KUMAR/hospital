@@ -15,11 +15,11 @@ const doctor=[
 function Doctors() {
   const [arr,setArr]=useState(doctor);
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 h-screen overflow-y-auto">
+    <div className="grid sm:grid-cols md:grid-cols-2 lg:grid-cols-3 h-full">
       {arr.map((item)=>{
         return (
-        <div className="m-2 overflow-hidden" key={item.id}>
-        <Card name={item.name} education={item.education} age={item.age} speciality={item.speciality} solved={item.solved} id={1}
+        <div className="m-2 overflow-hidden p-5 w-fit h-fit gap-8 mx-auto md:m-2" key={item.id}>
+        <Card name={item.name} education={item.education} age={item.age} speciality={item.speciality} solved={item.solved}
          />
         </div>
       )})}

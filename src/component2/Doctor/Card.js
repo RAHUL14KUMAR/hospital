@@ -1,11 +1,6 @@
 import React from 'react'
-// import {useNavigate} from 'react-router-dom'
 
-function Card({name,education,age,speciality,solved,open,setOpen,id}) {
-  const handleProfileClick = (id) => {
-    // Update the URL to navigate to the user profile route
-    window.location.href = `/play/${id}`;
-  };
+function Card({name,education,age,speciality,solved}) {
   return (
     <div className=" bg-emerald-100">
       <div className="ml-2 w-fit h-fit flex-col bg-white p-2">
