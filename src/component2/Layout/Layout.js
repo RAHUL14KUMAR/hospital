@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { FaCameraRetro, FaList, FaUserDoctor } from 'react-icons/fa6';
+import { FaCameraRetro, FaLaptopMedical, FaList, FaUserDoctor } from 'react-icons/fa6';
 import { RiHome3Fill,  RiListCheck2, RiLogoutBoxLine, RiMenu2Line, RiNotification3Line, RiProfileLine } from "react-icons/ri";
 import {motion} from 'framer-motion'
 import Contact from '../Contact/Contact';
@@ -8,6 +8,7 @@ import Careers from '../Career/Careers';
 import Doctors from '../Doctor/Doctors';
 import {useNavigate} from "react-router-dom"
 import Profile from '../Profile/Profile';
+import Appointment from '../Appointment/Appointment';
 
 
 function Layout() {
@@ -39,6 +40,9 @@ function Layout() {
 
             case "Profile":
                 return <Profile/>
+
+            case "Appointment":
+                return <Appointment/>
 
             default:
                 return <About/>
@@ -106,6 +110,12 @@ function Layout() {
                     </span>
                 </button>
 
+                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Appointment")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
+                        <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                            Test
+                        </span>
+                    </button>
+
                 <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("logout")}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         logout
@@ -150,11 +160,18 @@ function Layout() {
                         </span>
                     </button>
 
+                    <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Appointment")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
+                        <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                            Test
+                        </span>
+                    </button>
+
                     <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("logout")}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                             logout
                         </span>
                     </button>
+
                 </div>
             </div>
 
