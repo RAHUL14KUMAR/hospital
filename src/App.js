@@ -5,10 +5,12 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import UserDashboard from './components/pages/dashboard/userDashBoard';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <BrowserRouter>
+    <ToastContainer/>
       <Routes>
         <Route path='/' element={<UserDashboard/>}/>
         <Route path='/login' element={<Login/>}/>

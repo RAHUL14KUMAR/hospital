@@ -3,16 +3,44 @@ import {BsHospital, BsPencil} from 'react-icons/bs'
 import { MdOutlineMailOutline } from "react-icons/md";
 import { TbPasswordFingerprint } from "react-icons/tb";
 
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
+    const navigate=useNavigate();
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
+    async function verifyEmail(email){
+        const emailexp=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailexp.test(email)
+    }
+    
     
     const registerMe=async()=>{
-        
+
+        if(name==""||email==""||password==""){
+            toast.warning("enter all the fields")
+            return;
+        }
+
+        if(verifyEmail(email)){
+            toast.error("enter email correctly")
+            return;
+        }
+
+
+        const res=await axios.post(`${process.env.REACT_APP_SERVER_BASE}/user/register`,{name,email,password});
+
+        console.log(res.data);
+
+        if(res.status===201){
+            toast.success("navigate to login now")
+            navigate('/login')
+        }
     }
 
   return (
