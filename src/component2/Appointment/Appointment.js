@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './style.css'
-import { BsCash, BsPencilSquare } from 'react-icons/bs'
+import { BsPencilSquare } from 'react-icons/bs'
 import { MdExposurePlus1, MdFileUpload, MdOutlineFolderSpecial, MdOutlineMailOutline, MdPhoneAndroid } from 'react-icons/md'
 
 

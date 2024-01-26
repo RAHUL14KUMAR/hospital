@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { FaCameraRetro, FaLaptopMedical, FaList, FaUserDoctor } from 'react-icons/fa6';
 import { RiHome3Fill,  RiListCheck2, RiLogoutBoxLine, RiMenu2Line, RiNotification3Line, RiProfileLine } from "react-icons/ri";
 import {motion} from 'framer-motion'
@@ -9,13 +9,23 @@ import Doctors from '../Doctor/Doctors';
 import {useNavigate} from "react-router-dom"
 import Profile from '../Profile/Profile';
 import Appointment from '../Appointment/Appointment';
-
+import { toast } from 'react-toastify';
 
 function Layout() {
     const navigate=useNavigate();
     const [toggle,setToogle]=useState(false);
 
     const [renderComponent,setRenderComponent]=useState('About');
+
+    useEffect(()=>{
+        const a =JSON.parse(localStorage.getItem("user"))
+
+        if(!a){
+            toast.dark("you are not logged in")
+            navigate('/');
+            return;
+        }
+    },[])
 
 
     const handleNavItem=(component)=>{
