@@ -80,8 +80,7 @@ function Careers() {
             const res=await axios.request(config)
             console.log(res);
             if(res.status==201){
-                toast.success(res.data.message);
-                navigate('/play');
+                toast.info(res.data.message);
                 return;
             }
         }catch(err){
