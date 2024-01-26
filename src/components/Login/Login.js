@@ -22,8 +22,6 @@ function Login() {
 
         const res=await axios.post(`${process.env.REACT_APP_SERVER_BASE}/user/login`,{email,password});
 
-        console.log(res);
-
         if(res.status===200){
             toast.success("user logged in successfull");
             navigate('/play')
