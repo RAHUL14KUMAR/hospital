@@ -81,6 +81,12 @@ function Careers() {
             console.log(res);
             if(res.status==201){
                 toast.info(res.data.message);
+                setApplyFor("");
+                setEmail("");
+                setExperience("");
+                setFirstname("");
+                setLastname("");
+                setPic("");
                 return;
             }
         }catch(err){
