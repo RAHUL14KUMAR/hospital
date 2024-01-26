@@ -60,6 +60,13 @@ function Layout() {
         }
     }
 
+    const logout=()=>{
+        toast.info("you are logout",{autoClose:600})
+        localStorage.removeItem("user");
+        navigate('/');
+        return;
+    }
+
   return (
     <div className="p-1">
         {/* navbar */}
@@ -126,7 +133,7 @@ function Layout() {
                         </span>
                     </button>
 
-                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("logout")}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
+                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={logout}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         logout
                     </span>
