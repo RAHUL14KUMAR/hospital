@@ -4,14 +4,33 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { TbPasswordFingerprint } from "react-icons/tb";
 
 
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Login() {
+    const navigate=useNavigate();
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
-    const loginMe=()=>{
+    const loginMe=async()=>{
 
+        if(email=="" || password==""){
+            toast.warning("enter all details");
+            return;
+        }
+        
+        const res=await axios.post(`${process.env.REACT_APP_SERVER_BASE}/user/login`,{email,password});
+
+        console.log(res);
+        if(res.status===200){
+            toast.success("user logged in successfull");
+            navigate('/play')
+            return;
+        } else if(res.status===203){
+            toast.info(res.data);
+            return;
+        }
     }
 
   return (
