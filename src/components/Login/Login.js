@@ -19,13 +19,24 @@ function Login() {
             toast.warning("enter all details");
             return;
         }
-        
+
         const res=await axios.post(`${process.env.REACT_APP_SERVER_BASE}/user/login`,{email,password});
 
         console.log(res);
+
         if(res.status===200){
             toast.success("user logged in successfull");
             navigate('/play')
+            localStorage.setItem(
+                "user",
+                JSON.stringify({
+                  id: res.data._id,
+                  name: res.data.name,
+                  email: res.data.email,
+                  token:res.data.token,
+                  role:res.data.role
+                })
+              );
             return;
         } else if(res.status===203){
             toast.info(res.data);
