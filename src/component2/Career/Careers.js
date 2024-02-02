@@ -1,14 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import { BsCash, BsPencilSquare } from 'react-icons/bs'
 import './Career.css'
 import { MdExposurePlus1, MdFileUpload, MdOutlineFolderSpecial, MdOutlineMailOutline, MdPhoneAndroid } from 'react-icons/md'
 import { toast } from 'react-toastify';
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
 
 function Careers() {
-
-    const navigate=useNavigate();
 
     const token=JSON.parse(localStorage.getItem("user")).token
 
@@ -50,7 +47,7 @@ function Careers() {
     }
 
     const submit=async()=>{
-        if(firstname=="" || lastname=="" || email=="" || phoneNumber=="" || applyFor =="select..." || applyFor==""||salary==""||experience==""|| experience=="select..."){
+        if(firstname==="" || lastname==="" || email==="" || phoneNumber==="" || applyFor ==="select..." || applyFor===""||salary===""||experience===""|| experience==="select..."){
             toast.warning("enter all the fields")
             return;
         }
@@ -79,7 +76,7 @@ function Careers() {
         try{
             const res=await axios.request(config)
             console.log(res);
-            if(res.status==201){
+            if(res.status===201){
                 toast.info(res.data.message);
                 setApplyFor("");
                 setEmail("");
@@ -170,8 +167,7 @@ function Careers() {
                     </div>
                     </form>
                 </div>
-
-                
+            
 
                 <div className="border-r-4 border-r-emerald-800 m-5 flex w-fit rounded-lg border-l-4 border-l-emerald-800 bg-emerald-50 p-5 text-justify">
                     <div className="flex h-16 w-14 items-center justify-center bg-emerald-300">

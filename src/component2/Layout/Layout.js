@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { FaCameraRetro, FaLaptopMedical, FaList, FaUserDoctor } from 'react-icons/fa6';
+import { FaCameraRetro, FaLaptopMedical, FaList, FaPeopleCarryBox, FaUserDoctor } from 'react-icons/fa6';
 import { RiHome3Fill,  RiListCheck2, RiLogoutBoxLine, RiMenu2Line, RiNotification3Line, RiProfileLine } from "react-icons/ri";
 import {motion} from 'framer-motion'
 import Contact from '../Contact/Contact';
@@ -10,10 +10,12 @@ import {useNavigate} from "react-router-dom"
 import Profile from '../Profile/Profile';
 import Appointment from '../Appointment/Appointment';
 import { toast } from 'react-toastify';
+import Applicants from '../Admin/Applicants/Applicants';
 
 function Layout() {
     const navigate=useNavigate();
     const [toggle,setToogle]=useState(false);
+    const [role,setRole]=useState("")
 
     const [renderComponent,setRenderComponent]=useState('About');
 
@@ -23,6 +25,9 @@ function Layout() {
         if(!a){
             toast.dark("you are not logged in")
             navigate('/');
+            return;
+        }else{
+            setRole(a.role);
             return;
         }
     },[])
@@ -53,6 +58,9 @@ function Layout() {
 
             case "Appointment":
                 return <Appointment/>
+
+            case "Applicants":
+                return <Applicants/>
 
             default:
                 return <About/>
@@ -109,29 +117,35 @@ function Layout() {
                     </span>
                 </button>
 
-                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("Contact")}><FaCameraRetro className="text-2xl text-emerald-950"/>
+                {role==="USER" &&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("Contact")}><FaCameraRetro className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Contact
                     </span>
-                </button>
+                </button>}
 
-                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("Careers")}><FaList className="text-2xl text-emerald-950"/>
+                {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("Careers")}><FaList className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Careers
                     </span>
-                </button>
+                </button>}
 
-                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("Doctors")}><FaUserDoctor className="text-2xl text-emerald-950"/>
+                {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={()=>handleNavItem("Doctors")}><FaUserDoctor className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Doctors
                     </span>
-                </button>
+                </button>}
 
-                <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Appointment")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
+                {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Appointment")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                             Test
                         </span>
-                    </button>
+                    </button>}
+
+                {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Applicants")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
+                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                        Applicants
+                    </span>    
+                </button>}
 
                 <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={logout}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
@@ -159,29 +173,36 @@ function Layout() {
                         </span>
                     </button>
 
-                    <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Contact")}><FaCameraRetro className="text-2xl text-emerald-950"/>
+                    {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Contact")}><FaCameraRetro className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                             Contact
                         </span>
-                    </button>
+                    </button>}
 
-                    <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Careers")}><FaList className="text-2xl text-emerald-950"/>
+                    {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Careers")}><FaList className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                             Careers
                         </span>
-                    </button>
+                    </button>}
 
-                    <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Doctors")}><FaUserDoctor className="text-2xl text-emerald-950"/>
+                    {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Doctors")}><FaUserDoctor className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                             Doctors
                         </span>
-                    </button>
+                    </button>}
 
-                    <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Appointment")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
+                    {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Appointment")}><FaLaptopMedical className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                             Test
                         </span>
-                    </button>
+                    </button>}
+
+
+                    {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Applicants")}><FaPeopleCarryBox className="text-2xl text-emerald-950"/>
+                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                        Applicants
+                    </span>    
+                    </button>}
 
                     <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={logout}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
                         <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
