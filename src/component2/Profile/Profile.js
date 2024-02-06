@@ -15,6 +15,14 @@ import { toast } from 'react-toastify';
 function Profile() {
     const [value, setValue] = useState();
     const [comment,setCommment]=useState("");
+    const [announce,setAnnouncement]=useState('')
+
+    const announcement=()=>{
+        if(announce===''){
+            toast.info("announcement cant be empty!!!")
+            return;
+        }
+    }
 
 
     let name=JSON.parse(localStorage.getItem("user")).name;
@@ -136,7 +144,8 @@ function Profile() {
   return (
     <div className='flex-col items-center justify-center h-full'>
       <div className='font-baloo-bhai sm:text-2xl  md:text-4xl font-bold tracking-widest text-center text-emerald-800 overflow-hidden'>
-        Thanks for Contacting!!!
+       {role==="USER" && <h1 className='overflow-hidden'> Thanks for Contacting!!!</h1>}
+       {role==="ADMIN" && <h1 className='overflow-hidden'> Hello SIR!!!</h1>}
       </div>
 
       <div className="bg-emerald-300 w-44 h-44 mx-auto my-9">
@@ -159,7 +168,7 @@ function Profile() {
         </div>
       </div>
 
-        <div className='text-center'>
+        {role==="USER" && <div className='text-center'>
         <StyledRating
             name="highlight-selected-only"
             value={value}
@@ -177,7 +186,7 @@ function Profile() {
         {value==undefined?<p className='font-mono text-emerald-700 tracking-widest'> Rate US!!!</p> : 
         <p className='font-mono text-emerald-700 tracking-widest'> Thanks for the Rating!!!</p>}
 
-        <div className="my-4 mb-2">
+        {role==="USER" && <div className="my-4 mb-2">
           <textarea
             className="bg-emerald-300 text-emerald-900 font-mono placeholder-emerald-900"
             placeholder="Enter your views"
@@ -185,11 +194,21 @@ function Profile() {
             values={comment}
             onChange={(e)=>setCommment(e.target.value)}
           ></textarea>
-        </div>
-        <div>
+        </div>}
+        {role==="USER" &&<div>
           <button className='bg-emerald-300 text-emerald-900 hover:text-white font-mono p-3 rounded-sm' onClick={addComment}>Post Comment</button>
-        </div>
-        </div>
+        </div>}
+        </div>}
+
+
+        {role==="ADMIN" && <div className="flex-col text-center">
+            <div className="my-4 mb-2">
+                <textarea className="mx-auto bg-emerald-300 font-mono text-emerald-900 placeholder-emerald-900" placeholder="Announcement" name={announce} value={announce} onChange={(e)=>setAnnouncement(e.target.value)}></textarea>
+            </div>
+            <div>
+                <button className="rounded-sm bg-emerald-300 p-2 font-mono text-emerald-900 hover:text-white mb-3" onClick={announcement}>Announce</button>
+            </div>
+        </div>}
     </div>
   )
 }
