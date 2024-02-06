@@ -38,6 +38,7 @@ function Applicants() {
             </div>
           )
         })}
+        {arr.length===0 && <h1 className="font-bold font-mono tracking-widest text-2xl"> No active users for the career page</h1>}
       </div>
     </>
   )
