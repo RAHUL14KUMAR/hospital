@@ -11,8 +11,7 @@ import Profile from '../Profile/Profile';
 import Appointment from '../Appointment/Appointment';
 import { toast } from 'react-toastify';
 import Applicants from '../Admin/Applicants/Applicants';
-import Add from '../Doctor/Add';
-import { Mic, PeopleAltTwoTone } from '@mui/icons-material';
+import { Mic, PeopleAltTwoTone, Search } from '@mui/icons-material';
 import Announce from '../Admin/Search/Search';
 
 function Layout() {
@@ -65,10 +64,7 @@ function Layout() {
             case "Applicants":
                 return <Applicants/>
 
-            case "Add":
-                return <Add/>
-
-            case "Announce":
+            case "Search":
                 return <Announce/>
 
             default:
@@ -156,15 +152,10 @@ function Layout() {
                     </span>    
                 </button>}
 
-                {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Add")}><PeopleAltTwoTone className="text-2xl text-emerald-950"/>
-                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
-                        Add
-                    </span>    
-                    </button>}
 
-                {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Announce")}><Mic className="text-2xl text-emerald-950"/>
+                {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Search")}><Search className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
-                        Announce
+                        Search
                     </span>    
                     </button>}
 
@@ -225,16 +216,10 @@ function Layout() {
                     </span>    
                     </button>}
 
-                    {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Add")}><PeopleAltTwoTone className="text-2xl text-emerald-950"/>
-                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
-                        Add
-                    </span>    
-                    </button>}
 
-
-                    {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Announce")}><Mic className="text-2xl text-emerald-950"/>
+                    {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Search")}><Search className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
-                        Announce
+                        Search
                     </span>    
                     </button>}
                     

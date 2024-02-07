@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import Card from './Card'
-// import './Doctor'
 
 const doctor=[
   {id:1,name:"Aryan",education:"MBBS",age:37+"years",speciality:"Heart",solved:100+"+"},
