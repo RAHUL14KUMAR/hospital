@@ -11,26 +11,41 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { io } from "socket.io-client";
+
+const socket = io.connect(`${process.env.REACT_APP_SOCKET_BASE_URL}`);
 
 function Profile() {
     const [value, setValue] = useState();
     const [comment,setCommment]=useState("");
     const [announce,setAnnouncement]=useState('')
 
-    const announcement=()=>{
-        if(announce===''){
-            toast.info("announcement cant be empty!!!")
-            return;
-        }
+    const announcement=(e)=>{
+      e.preventDefault();
+      if(announce===''){
+        toast.info("announcement cant be empty!!!")
+        return;
+      }
+
+      socket.emit("announcement",{announce})
+      setAnnouncement("");
+      toast.dark("annoumcement has been done");
     }
 
+    let user=JSON.parse(localStorage.getItem("user"))
+    let name=user.name;
 
-    let name=JSON.parse(localStorage.getItem("user")).name;
-
-    let role=JSON.parse(localStorage.getItem("user")).role;
+    let role=user.role;
 
 
-    let email=JSON.parse(localStorage.getItem("user")).email;
+    let email=user.email;
+    let id=user.id
+
+    useEffect(()=>{
+      if(role==="ADMIN"){
+        socket.emit("adminConnected",{id})
+      }
+    },[])
 
     const addComment=async()=>{
 
@@ -138,9 +153,8 @@ function Profile() {
     }
       
     IconContainer.propTypes = {
-        value: PropTypes.number.isRequired,
+      value: PropTypes.number.isRequired,
     };
-    console.log("value",value)
   return (
     <div className='flex-col items-center justify-center h-full'>
       <div className='font-baloo-bhai sm:text-2xl  md:text-4xl font-bold tracking-widest text-center text-emerald-800 overflow-hidden'>
