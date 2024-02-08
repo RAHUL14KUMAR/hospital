@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import Applicants from '../Admin/Applicants/Applicants';
 import { Mic, PeopleAltTwoTone, Search } from '@mui/icons-material';
 import Announce from '../Admin/Search/Search';
+import Notification from '../Notification/Notification';
 
 function Layout() {
     const navigate=useNavigate();
@@ -67,6 +68,9 @@ function Layout() {
             case "Search":
                 return <Announce/>
 
+            case "Notification":
+                return <Notification/>
+
             default:
                 return <About/>
                 
@@ -80,6 +84,7 @@ function Layout() {
         return;
     }
 
+
   return (
     <div className="p-1">
         {/* navbar */}
@@ -88,7 +93,7 @@ function Layout() {
                 <RiMenu2Line className="text-emerald-900 text-2xl arrow-icon"/>
             </button>
             <div className="flex items-center justify-center p-2 overflow-hidden">
-                <button className="bg-emerald-200 w-14 h-10 rounded flex items-center justify-center">
+                <button className="bg-emerald-200 w-14 h-10 rounded flex items-center justify-center" onClick={()=>handleNavItem("Notification")}>
                     <RiNotification3Line className="text-emerald-900 text-2xl  arrow-icon"/>
                 </button>
 
@@ -235,7 +240,7 @@ function Layout() {
 
             {/* body for children */}
             {!toggle && 
-                <div className="mt-2 bg-emerald-100 w-full ml-1 p-2 border-4 border-emerald-800">
+                <div className="mt-2 w-full ml-1 p-2">
                     {setComponent()}
                 </div>
             }

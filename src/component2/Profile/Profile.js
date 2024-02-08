@@ -19,6 +19,19 @@ function Profile() {
     const [value, setValue] = useState();
     const [comment,setCommment]=useState("");
     const [announce,setAnnouncement]=useState('')
+    const [query,setQuery]=useState("");
+
+    const sendQuery=(e)=>{
+      e.preventDefault();
+      if(query===''){
+        toast.info("query cant be empty!!!")
+        return;
+      }
+
+      socket.emit("query",{query})
+      setQuery("");
+      toast.dark("your query has been sent")
+    }
 
     const announcement=(e)=>{
       e.preventDefault();
@@ -44,6 +57,10 @@ function Profile() {
     useEffect(()=>{
       if(role==="ADMIN"){
         socket.emit("adminConnected",{id})
+      }
+
+      if(role==="CONSULTANT"){
+        socket.emit("consultantConnected",{id})
       }
     },[])
 
@@ -221,6 +238,15 @@ function Profile() {
             </div>
             <div>
                 <button className="rounded-sm bg-emerald-300 p-2 font-mono text-emerald-900 hover:text-white mb-3" onClick={announcement}>Announce</button>
+            </div>
+        </div>}
+
+        {role==="CONSULTANT" && <div className="flex-col text-center">
+            <div className="my-4 mb-2">
+                <textarea className="mx-auto bg-emerald-300 font-mono text-emerald-900 placeholder-emerald-900" placeholder="send query to admin" name={query} value={query} onChange={(e)=>setQuery(e.target.value)}></textarea>
+            </div>
+            <div>
+                <button className="rounded-sm bg-red-600 hover:bg-red-700 p-2 font-mono text-black hover:text-white mb-3" onClick={sendQuery}>SEND</button>
             </div>
         </div>}
     </div>

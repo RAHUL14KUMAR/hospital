@@ -2,7 +2,7 @@ import React from 'react'
 
 function Card({name,education,age,speciality,solved}) {
   return (
-    <div className=" bg-emerald-100">
+    <div className=" bg-emerald-100 w-100">
       <div className="ml-2 w-fit h-fit flex-col bg-white p-2">
         <div className="text-center font-bold tracking-widest text-emerald-800">Name: <span className="font-mono text-black">{name}</span></div>
 

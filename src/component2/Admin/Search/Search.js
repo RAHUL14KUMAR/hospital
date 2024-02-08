@@ -32,7 +32,7 @@ function Search() {
         })
         .map((item)=>{
         return (
-        <div className="m-2 overflow-hidden p-5 w-fit h-fit mx-auto md:m-2" key={item.id}>
+        <div className="m-2 bg-emerald-200 overflow-hidden p-5 w-fit h-fit mx-auto md:m-2" key={item.id}>
         <Card name={item.name} education={item.education} age={item.age} speciality={item.speciality} solved={item.solved}
          />
         </div>
