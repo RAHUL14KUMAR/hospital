@@ -47,7 +47,15 @@ function Notification() {
 
   return (
     <div className="grid grid-cols">
-      {workerS.map((item)=>{
+      {role==="CONSULTANT" || "DOCTOR" && workerS.map((item)=>{
+        return (
+        <div className="m-1 p-1" key={Math.random()} >
+        <Card message={item}
+         />
+        </div>
+      )})}
+
+    {role==="ADMIN" && admin.map((item)=>{
         return (
         <div className="m-1 p-1">
         <Card message={item}

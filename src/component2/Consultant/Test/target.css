@@ -1,0 +1,16 @@
+@media only screen and (min-width:370px) and (max-width:520px){
+    .dis{
+        display:flex;
+        flex-direction:column;
+        text-align: center;
+        margin-top:1em;
+    }
+    .sha{
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .mar{
+        margin-top:2em;
+        margin-bottom:1.2em
+    }
+}

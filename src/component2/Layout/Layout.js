@@ -14,6 +14,8 @@ import Applicants from '../Admin/Applicants/Applicants';
 import { Mic, PeopleAltTwoTone, Search } from '@mui/icons-material';
 import Announce from '../Admin/Search/Search';
 import Notification from '../Notification/Notification';
+import { BsReceiptCutoff } from 'react-icons/bs';
+import Test from '../Consultant/Test/Test';
 
 function Layout() {
     const navigate=useNavigate();
@@ -70,6 +72,9 @@ function Layout() {
 
             case "Notification":
                 return <Notification/>
+
+            case 'SeeReport':
+                return <Test/>
 
             default:
                 return <About/>
@@ -164,6 +169,12 @@ function Layout() {
                     </span>    
                     </button>}
 
+                {role==="CONSULTANT"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("SeeReport")}><BsReceiptCutoff className="text-2xl text-emerald-950"/>
+                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                        Reports
+                    </span>    
+                    </button>}
+
                 <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900" onClick={logout}><RiLogoutBoxLine className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         logout
@@ -225,6 +236,12 @@ function Layout() {
                     {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Search")}><Search className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Search
+                    </span>    
+                    </button>}
+
+                    {role==="CONSULTANT"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("SeeReport")}><BsReceiptCutoff className="text-2xl text-emerald-950"/>
+                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                        Reports
                     </span>    
                     </button>}
                     
