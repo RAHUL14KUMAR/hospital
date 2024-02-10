@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { FaCameraRetro, FaLaptopMedical, FaList, FaPeopleCarryBox, FaUserDoctor } from 'react-icons/fa6';
+import { FaCameraRetro, FaLaptopMedical, FaList, FaPeopleCarryBox, FaSpeakap, FaUserDoctor } from 'react-icons/fa6';
 import { RiHome3Fill,  RiListCheck2, RiLogoutBoxLine, RiMenu2Line, RiNotification3Line, RiProfileLine } from "react-icons/ri";
 import {motion} from 'framer-motion'
 import Contact from '../Contact/Contact';
@@ -16,6 +16,8 @@ import Announce from '../Admin/Search/Search';
 import Notification from '../Notification/Notification';
 import { BsReceiptCutoff } from 'react-icons/bs';
 import Test from '../Consultant/Test/Test';
+import Ask from '../Ask/Ask';
+import Query from '../../physician/Answer/Query';
 
 function Layout() {
     const navigate=useNavigate();
@@ -75,6 +77,12 @@ function Layout() {
 
             case 'SeeReport':
                 return <Test/>
+
+            case 'Ask':
+                return <Ask/>
+            
+            case "Query":
+                return <Query/>
 
             default:
                 return <About/>
@@ -156,6 +164,12 @@ function Layout() {
                         </span>
                     </button>}
 
+                    {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Ask")}><FaSpeakap className="text-2xl text-emerald-950"/>
+                        <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                            ASK
+                        </span>
+                    </button>}
+
                 {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Applicants")}><FaPeopleCarryBox className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Applicants
@@ -172,6 +186,12 @@ function Layout() {
                 {role==="CONSULTANT"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("SeeReport")}><BsReceiptCutoff className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Reports
+                    </span>    
+                    </button>}
+
+                {role==="DOCTOR" && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Query")}><BsReceiptCutoff className="text-2xl text-emerald-950"/>
+                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                        Query
                     </span>    
                     </button>}
 
@@ -225,6 +245,12 @@ function Layout() {
                         </span>
                     </button>}
 
+                    {role==="USER"&&<button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Ask")}><FaSpeakap className="text-2xl text-emerald-950"/>
+                        <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                            ASK
+                        </span>
+                    </button>}
+
 
                     {role==="ADMIN"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Applicants")}><FaPeopleCarryBox className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
@@ -242,6 +268,12 @@ function Layout() {
                     {role==="CONSULTANT"  && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("SeeReport")}><BsReceiptCutoff className="text-2xl text-emerald-950"/>
                     <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
                         Reports
+                    </span>    
+                    </button>}
+
+                    {role==="DOCTOR" && <button className="hover:w-11/12 mr-2 p-3 hover:bg-emerald-200 m-2 ml-5 rounded-lg text-emerald-900 flex overflow-hidden p-1 text-emerald-900 rounded-lg hover:border-r-4 hover:border-r-emerald-800" onClick={()=>handleNavItem("Query")}><BsReceiptCutoff className="text-2xl text-emerald-950"/>
+                    <span className="arrow-icon text-lg mb-2 -py-1 ml-2">
+                        Query
                     </span>    
                     </button>}
                     
