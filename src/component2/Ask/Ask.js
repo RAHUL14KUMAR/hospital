@@ -13,10 +13,13 @@ function Ask() {
     const user=JSON.parse(localStorage.getItem("user"));
     const role=user.role;
     const id=user.id;
+    const room=user.id;
+    const email=user.email
+
 
     useEffect(()=>{
         socket.emit("userConnected",{id});
-    });
+    },[])
 
     const sendQuestion=(e)=>{
         e.preventDefault();
@@ -25,20 +28,21 @@ function Ask() {
             toast.info("you can't ask empty question !!!");
             return;
         }
+        toast.warning("your question has been send to doctors")
         socket.emit("questionAsk",{question,id})
         resultref.current.innerText="waiting for the doctor to response ...."
     }
   return (
-    <div class="flex h-screen items-center justify-center overflow-hidden">
-        <div class="flex-col border-4 border-black text-center p-4" ref={resultref}>
-            <div class="my-4 mb-2">
-                <div class="font-mono text-2xl mb-12">ASK YOUR DOUBTS FREELY!!!</div>
-                <textarea class="mx-auto min-h-32 bg-emerald-300 font-mono text-emerald-900 placeholder-emerald-900" placeholder="ASK YOUR QUERY!!!" name={question} value={question}
+    <div className="flex h-screen items-center justify-center overflow-hidden">
+        <div className="flex-col border-4 border-black text-center p-4" ref={resultref}>
+            <div className="my-4 mb-2">
+                <div className="font-mono text-2xl mb-12">ASK YOUR DOUBTS FREELY!!!</div>
+                <textarea className="mx-auto min-h-32 bg-emerald-300 font-mono text-emerald-900 placeholder-emerald-900" placeholder="ASK YOUR QUERY!!!" name={question} value={question}
                     onChange={(e)=>setQuestion(e.target.value)}
                 ></textarea>
                 </div>
                 <div>
-                <button class="mb-3 rounded-lg bg-cyan-300 p-2 font-mono text-black hover:bg-cyan-400" onClick={sendQuestion}>ASK QUERY</button>
+                <button className="mb-3 rounded-lg bg-cyan-300 p-2 font-mono text-black hover:bg-cyan-400" onClick={sendQuestion}>ASK QUERY</button>
                 </div>
         </div>
     </div>  

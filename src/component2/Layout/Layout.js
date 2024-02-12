@@ -106,9 +106,9 @@ function Layout() {
                 <RiMenu2Line className="text-emerald-900 text-2xl arrow-icon"/>
             </button>
             <div className="flex items-center justify-center p-2 overflow-hidden">
-                <button className="bg-emerald-200 w-14 h-10 rounded flex items-center justify-center" onClick={()=>handleNavItem("Notification")}>
+                {role!=="USER" && <button className="bg-emerald-200 w-14 h-10 rounded flex items-center justify-center" onClick={()=>handleNavItem("Notification")}>
                     <RiNotification3Line className="text-emerald-900 text-2xl  arrow-icon"/>
-                </button>
+                </button>}
 
                 <div className="overflow-hidden">
                     <button className="bg-emerald-200 p-2 ml-5 rounded-lg text-purple-900 flex overflow-hidden p-1 text-emerald-900" 
