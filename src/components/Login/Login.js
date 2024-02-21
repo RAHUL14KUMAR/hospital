@@ -7,11 +7,14 @@ import { TbPasswordFingerprint } from "react-icons/tb";
 import {Link,useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Loading from '../../Loader/Loading';
+
 
 function Login() {
     const navigate=useNavigate();
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const [load,setLoad]=useState(false);
 
     const loginMe=async()=>{
 
@@ -19,6 +22,8 @@ function Login() {
             toast.warning("enter all details");
             return;
         }
+
+        setLoad(true);
 
         const res=await axios.post(`${process.env.REACT_APP_SERVER_BASE}/user/login`,{email,password});
 
@@ -35,16 +40,19 @@ function Login() {
                   role:res.data.role
                 })
               );
+              setLoad(false)
             return;
+            
         } else if(res.status===203){
             toast.info(res.data);
+            setLoad(false)
             return;
         }
     }
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-emerald-100">
-        <div className="flex-col rounded-lg bg-white text-center drop-shadow-2xl">
+    <div className={`flex h-screen w-screen items-center justify-center ${load === true ? 'bg-white' : 'bg-emerald-100'}`}>
+        {!load && <div className="flex-col rounded-lg bg-white text-center drop-shadow-2xl">
             <div className="flex-col p-2">
                 <div className="mx-auto my-auto flex items-center justify-center h-24 w-24 rounded-full bg-emerald-100">
                     <BsHospital className="text-4xl text-green-600" />
@@ -87,7 +95,12 @@ function Login() {
                     <Link to='/register'>New User? Register Here</Link>
                 </div>
             </div>
-        </div>
+        </div>}
+        {
+            load && <div>
+                <Loading/>
+            </div>
+        }
     </div>
   )
 }

@@ -47,11 +47,10 @@ function Notification() {
 
   return (
     <div className="grid grid-cols">
-      {role==="CONSULTANT" || "DOCTOR" && workerS.map((item)=>{
+      {role!=="ADMIN" && workerS.map((item)=>{
         return (
         <div className="m-1 p-1" key={Math.random()} >
-        <Card message={item}
-         />
+          <Card message={item}/>
         </div>
       )})}
 
