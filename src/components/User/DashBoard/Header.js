@@ -1,9 +1,18 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Head from '../../assets/header.jpg'
 import { BsPencilFill } from 'react-icons/bs'
 import Activity from './Activity'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+
+    const navigate=useNavigate();
+
+    const Asking=()=>{
+        navigate('/play');
+        return;
+    }
+
   return (
     <div className='w-screen overflow-hidden shadow-sm'>
     <div className="m-8 p-5 bg-emerald-100 flex justify-between overflow-hidden flex flex-col sm:flex-col md:flex-row">
@@ -18,7 +27,7 @@ function Header() {
                     <br/>At your own place  and At your time via chat and videos 
                 </p>
 
-                <button className='bg-emerald-500 hover:bg-emerald-800 text-white p-4 rounded-lg font-medium text-xl mt-4 flex'>Ask Your Question
+                <button className='bg-emerald-500 hover:bg-emerald-800 text-white p-4 rounded-lg font-medium text-xl mt-4 flex' onClick={Asking}>Ask Your Question
                 <BsPencilFill className='
                 p-1 arrow-icon font-bold text-2xl text-white' />
                 </button>
